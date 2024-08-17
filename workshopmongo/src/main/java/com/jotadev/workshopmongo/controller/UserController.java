@@ -1,5 +1,6 @@
 package com.jotadev.workshopmongo.controller;
 
+import com.jotadev.workshopmongo.domain.Post;
 import com.jotadev.workshopmongo.domain.User;
 import com.jotadev.workshopmongo.dto.UserDTO;
 import com.jotadev.workshopmongo.service.UserService;
@@ -52,5 +53,11 @@ public class UserController {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
