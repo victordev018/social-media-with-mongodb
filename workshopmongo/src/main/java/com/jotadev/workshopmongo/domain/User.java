@@ -1,9 +1,12 @@
 package com.jotadev.workshopmongo.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "user")       // indica pro mongoDb que esta classe é uma coleção lá no banco de dados
@@ -16,6 +19,12 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+
+    // lazy = true, garante com que os posts relacionados a este user não venha automaticamente quando recuperar
+    // os dados deste usuário, só serão carregados os posts quando explicitamente forem solicitados
+
+    @DBRef(lazy = true)  // indica que o atributo é uma referência a outra coleção do mongoDB
+    private List<Post> posts = new ArrayList<>();
 
     // constructors
     public User(){
@@ -50,6 +59,10 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Post> getPosts(){
+        return this.posts;
     }
 
     // hashCode and equals
