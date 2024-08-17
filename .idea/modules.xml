@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/workshopmongo.iml" filepath="$PROJECT_DIR$/.idea/workshopmongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/socialmediamongo.iml" filepath="$PROJECT_DIR$/.idea/socialmediamongo.iml" />
     </modules>
   </component>
 </project>
